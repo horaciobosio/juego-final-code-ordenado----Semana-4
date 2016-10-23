@@ -164,18 +164,22 @@ var juego = {
       that.mezclarFichas(veces-1);
     },10);
   },
-  iniciar:function(el){
+  iniciar:function(el,nivel){
     this.instalarPiezas(el);
-    this.mezclarFichas(200);
+    this.mezclarFichas(nivel);
     this.capturarTeclas();
   }
 }
 
-$(function(){
-  /* la funcion iniciar necesita recibir el elemento sobre el cual
-  queremos montar nuestro juego*/
+function start()
+{	
+	document.getElementById('juego').style.display = "";
+	document.getElementById('niveles').style.display = "none";
+	
+	var nivel = $('input[name=group]:checked').val();	
+	var elemento = $('#juego');
+		
+	juego.iniciar(elemento,nivel);
+	juego.moverHaciaAbajo();	
+}
 
-  var elemento = $('#juego');
-  juego.iniciar(elemento);
-  juego.moverHaciaAbajo();
-})
